@@ -21,7 +21,6 @@ BuildRequires:	swig
 BuildRequires:	swig-devel
 BuildRequires:	zlib-devel
 Conflicts:	%{mklibname %{name} 1}-devel < 1.16
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Little cms is a color management library. Implements fast transforms between
