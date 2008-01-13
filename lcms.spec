@@ -5,7 +5,7 @@
 Summary:	Little cms is a color management library
 Name:		lcms
 Version:	1.17
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	MIT
 Group:		Graphics
 URL:		http://www.littlecms.com/
