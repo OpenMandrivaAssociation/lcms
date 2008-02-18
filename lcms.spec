@@ -2,7 +2,7 @@
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
-Summary:	Little cms is a color management library
+Summary:	Color management library
 Name:		lcms
 Version:	1.17
 Release:	%mkrel 2
