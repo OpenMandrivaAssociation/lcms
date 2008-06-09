@@ -97,9 +97,13 @@ rm -rf %{buildroot}
 rm -f %{buildroot}%{py_platsitedir}/*.a
 rm -f %{buildroot}%{py_platsitedir}/*.la
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %clean
 rm -rf %{buildroot}
