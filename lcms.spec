@@ -18,7 +18,6 @@ BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	python-devel
 BuildRequires:	swig
-BuildRequires:	swig-devel
 BuildRequires:	zlib-devel
 Conflicts:	%{mklibname %{name} 1}-devel < 1.16
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
