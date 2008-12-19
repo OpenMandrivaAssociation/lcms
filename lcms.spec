@@ -5,7 +5,7 @@
 Summary:	Color management library
 Name:		lcms
 Version:	1.17
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	MIT
 Group:		Graphics
 URL:		http://www.littlecms.com/
