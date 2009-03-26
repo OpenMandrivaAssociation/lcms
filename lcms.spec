@@ -4,14 +4,12 @@
 
 Summary:	Color management library
 Name:		lcms
-Version:	1.17
-Release:	%mkrel 6
+Version:	1.18
+Release:	%mkrel 1
 License:	MIT
 Group:		Graphics
 URL:		http://www.littlecms.com/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Patch0:		liblcms-bigendian.diff
-Patch1:		lcms-python.diff
 BuildRequires:	automake1.7
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
@@ -64,8 +62,6 @@ engine.
 %prep
 
 %setup -q
-%patch0 -p0
-%patch1 -p0
 
 # fix attribs
 chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
