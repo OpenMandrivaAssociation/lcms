@@ -5,11 +5,12 @@
 Summary:	Color management library
 Name:		lcms
 Version:	1.18
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	MIT
 Group:		Graphics
 URL:		http://www.littlecms.com/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Patch0:         lcms-1.18-CVE-2009-0793.patch
 BuildRequires:	automake1.7
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
@@ -65,6 +66,8 @@ engine.
 
 # fix attribs
 chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
+
+%patch0 -p0 -b .cve-2009-0793
 
 %build
 rm -f configure
