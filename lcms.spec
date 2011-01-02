@@ -5,12 +5,12 @@
 Summary:	Color management library
 Name:		lcms
 Version:	1.19
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	MIT
 Group:		Graphics
 URL:		http://www.littlecms.com/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	automake1.7
+BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
