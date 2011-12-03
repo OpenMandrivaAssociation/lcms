@@ -5,20 +5,18 @@
 Summary:	Color management library
 Name:		lcms
 Version:	1.19
-Release:	%mkrel 4
+Release:	5
 License:	MIT
 Group:		Graphics
 URL:		http://www.littlecms.com/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-BuildRequires:	automake
+BuildRequires:	autoconf automake libtool
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
-BuildRequires:	libtool
 BuildRequires:	python-devel
 BuildRequires:	swig
 BuildRequires:	zlib-devel
 Conflicts:	%{mklibname %{name} 1}-devel < 1.16
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Little cms is a color management library. Implements fast transforms between
@@ -43,7 +41,7 @@ Provides:	%{name}-devel = %{version}
 Provides:	%{mklibname %{name} 1}-devel = %{version}
 Obsoletes:	%{name}-devel
 Obsoletes:	%{mklibname %{name} 1}-devel
-Requires:	%{libname} = %{version}
+Requires:	%{libname} >= %{version}-%{release}
 
 %description -n	%{develname}
 Little cms is a color management library. Implements fast transforms between
@@ -87,22 +85,10 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 # cleanup
-rm -f %{buildroot}%{py_platsitedir}/*.a
-rm -f %{buildroot}%{py_platsitedir}/*.la
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
+rm -f %{buildroot}%{py_platsitedir}/*.*a
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files
-%defattr(-,root,root)
 %doc doc/* matlab/*.pdf
 %attr(0755,root,root) %{_bindir}/icc2ps
 %attr(0755,root,root) %{_bindir}/icclink
@@ -118,20 +104,16 @@ rm -rf %{buildroot}
 %attr(0644,root,root) %{_mandir}/man1/wtpt.1*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc AUTHORS COPYING NEWS README.1ST
 %attr(0755,root,root) %{_libdir}/*.so.*
 
 %files -n %{develname}
 %defattr(-,root,root)
 %attr(0644,root,root) %{_includedir}/*
-%attr(0644,root,root) %{_libdir}/*.la
 %attr(0644,root,root) %{_libdir}/*.so
-%attr(0644,root,root) %{_libdir}/*.a
 %attr(0644,root,root) %{_libdir}/pkgconfig/lcms.pc
 
 %files -n python-lcms
-%defattr(-,root,root)
 %doc python/testbed/*
 %attr(0644,root,root) %{py_platsitedir}/lcms.py
 %attr(0755,root,root) %{py_platsitedir}/_lcms.so
