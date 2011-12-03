@@ -108,7 +108,6 @@ rm -f %{buildroot}%{_libdir}/*.*a
 %attr(0755,root,root) %{_libdir}/*.so.*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %attr(0644,root,root) %{_includedir}/*
 %attr(0644,root,root) %{_libdir}/*.so
 %attr(0644,root,root) %{_libdir}/pkgconfig/lcms.pc
