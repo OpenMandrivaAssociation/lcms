@@ -65,6 +65,7 @@ engine.
 chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
 
 %build
+autoreconf -fi
 
 %configure2_5x \
     --with-python
