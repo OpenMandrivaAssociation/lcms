@@ -5,7 +5,7 @@
 Summary:	Color management library
 Name:		lcms
 Version:	1.19
-Release:	8
+Release:	9
 License:	MIT
 Group:		Graphics
 Url:		http://www.littlecms.com/
