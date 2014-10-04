@@ -10,6 +10,7 @@ License:	MIT
 Group:		Graphics
 Url:		http://www.littlecms.com/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Patch0:		lcms-1.19-fix-python3.2.patch
 BuildRequires:	libtool
 BuildRequires:	swig
 BuildRequires:	jpeg-devel
@@ -43,12 +44,12 @@ ICC profiles. It is focused on speed, and is portable across several platforms.
 
 This package contains the static lcms library and its header files.
 
-%package -n	python-lcms
-Summary:	Python bindings for the lcms color management engine
+%package -n	python2-lcms
+Summary:	Python2 bindings for the lcms color management engine
 Group:		Development/Python
 
-%description -n	python-lcms
-python-lcms is a Python module that interfaces to the lcms color management
+%description -n	python2-lcms
+python2-lcms is a Python2 module that interfaces to the lcms color management
 engine.
 
 %prep
@@ -56,8 +57,10 @@ engine.
 %setup -q
 chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
 
+
 %build
-%configure2_5x \
+%apply_patches
+%configure \
 	--with-python \
 	--disable-static
 
@@ -98,8 +101,8 @@ make check
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lcms.pc
 
-%files -n python-lcms
+%files -n python2-lcms
 %doc python/testbed/*
-%{py_platsitedir}/lcms.py
-%{py_platsitedir}/_lcms.so
+%{py2_platsitedir}/lcms.py
+%{py2_platsitedir}/_lcms.so
 
