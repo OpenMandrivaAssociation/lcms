@@ -1,11 +1,11 @@
-%define major	1
+%define major 1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
 
 Summary:	Color management library
 Name:		lcms
 Version:	1.19
-Release:	16
+Release:	17
 License:	MIT
 Group:		Graphics
 Url:		http://www.littlecms.com/
@@ -53,13 +53,11 @@ python2-lcms is a Python2 module that interfaces to the lcms color management
 engine.
 
 %prep
-
 %setup -q
+%apply_patches
 chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
 
-
 %build
-%apply_patches
 %configure \
 	--with-python \
 	--disable-static
@@ -105,4 +103,3 @@ make check
 %doc python/testbed/*
 %{py2_platsitedir}/lcms.py
 %{py2_platsitedir}/_lcms.so
-
