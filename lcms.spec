@@ -47,14 +47,15 @@ This package contains the static lcms library and its header files.
 %package -n	python2-lcms
 Summary:	Python2 bindings for the lcms color management engine
 Group:		Development/Python
+BuildRequires:	pkgconfig(python2)
 
 %description -n	python2-lcms
 python2-lcms is a Python2 module that interfaces to the lcms color management
 engine.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
+
 chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
 
 %build
@@ -67,13 +68,13 @@ pushd python
 ./swig_lcms
 popd
 
-%make
+%make_build
 
 %check
 make check
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc doc/* matlab/*.pdf
