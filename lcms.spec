@@ -15,7 +15,7 @@ BuildRequires:	libtool
 BuildRequires:	swig
 BuildRequires:	jpeg-devel
 BuildRequires:	tiff-devel
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -35,8 +35,8 @@ This package provides the shared lcms library.
 %package -n	%{devname}
 Summary:	Static library and header files for the "Little cms" library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}
-Requires:	%{libname} >= %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{libname} >= %{EVRD}
 
 %description -n	%{devname}
 Little cms is a color management library. Implements fast transforms between
@@ -47,7 +47,6 @@ This package contains the static lcms library and its header files.
 %package -n	python2-lcms
 Summary:	Python2 bindings for the lcms color management engine
 Group:		Development/Python
-BuildRequires:	pkgconfig(python2)
 
 %description -n	python2-lcms
 python2-lcms is a Python2 module that interfaces to the lcms color management
@@ -102,5 +101,5 @@ make check
 
 %files -n python2-lcms
 %doc python/testbed/*
-%{py2_platsitedir}/lcms.py
-%{py2_platsitedir}/_lcms.so
+%{python2_platsitedir}/lcms.py
+%{python2_platsitedir}/_lcms.so
