@@ -55,17 +55,23 @@ engine.
 %prep
 %autosetup -p1
 
-chmod 644 doc/* matlab/* AUTHORS COPYING NEWS README.1ST python/testbed/*
+find . -name \*.[ch] | xargs chmod -x
+chmod 0644 AUTHORS COPYING ChangeLog NEWS README.1ST doc/TUTORIAL.TXT doc/LCMSAPI.TXT
 
 %build
+export PYTHON=%{__python2}
 %configure \
 	--with-python \
 	--disable-static
 
+# remove rpath from libtool
+sed -i.rpath 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i.rpath 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+
 # regenerate the swig shit
-pushd python
+cd python
 ./swig_lcms
-popd
+cd -
 
 %make_build
 
@@ -101,5 +107,5 @@ make check
 
 %files -n python2-lcms
 %doc python/testbed/*
-#{python2_sitearch}/lcms.py
-#{python2_sitearch}/_lcms.so
+%{python2_sitearch}/lcms.py*
+%{python2_sitearch}/_lcms.so
