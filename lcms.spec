@@ -101,5 +101,5 @@ make check
 
 %files -n python2-lcms
 %doc python/testbed/*
-%{python2_sitearch}/lcms.py
-%{python2_sitearch}/_lcms.so
+#{python2_sitearch}/lcms.py
+#{python2_sitearch}/_lcms.so
