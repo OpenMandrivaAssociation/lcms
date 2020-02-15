@@ -15,7 +15,7 @@ BuildRequires:	libtool
 BuildRequires:	swig
 BuildRequires:	jpeg-devel
 BuildRequires:	tiff-devel
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -44,12 +44,12 @@ ICC profiles. It is focused on speed, and is portable across several platforms.
 
 This package contains the static lcms library and its header files.
 
-%package -n	python2-lcms
-Summary:	Python2 bindings for the lcms color management engine
+%package -n	python-lcms
+Summary:	Python bindings for the lcms color management engine
 Group:		Development/Python
 
-%description -n	python2-lcms
-python2-lcms is a Python2 module that interfaces to the lcms color management
+%description -n	python-lcms
+python2-lcms is a Python module that interfaces to the lcms color management
 engine.
 
 %prep
@@ -59,7 +59,6 @@ find . -name \*.[ch] | xargs chmod -x
 chmod 0644 AUTHORS COPYING ChangeLog NEWS README.1ST doc/TUTORIAL.TXT doc/LCMSAPI.TXT
 
 %build
-export PYTHON=%{__python2}
 %configure \
 	--with-python \
 	--disable-static
@@ -105,7 +104,8 @@ make check
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lcms.pc
 
-%files -n python2-lcms
+%files -n python-lcms
 %doc python/testbed/*
-%{python2_sitearch}/lcms.py*
-%{python2_sitearch}/_lcms.so
+%{python_sitearch}/lcms.py*
+%{python_sitearch}/_lcms.so
+%{python_sitearch}/__pycache__/*
