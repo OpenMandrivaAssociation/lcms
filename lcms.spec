@@ -5,7 +5,7 @@
 Summary:	Color management library
 Name:		lcms
 Version:	1.19
-Release:	21
+Release:	22
 License:	MIT
 Group:		Graphics
 Url:		http://www.littlecms.com/
@@ -15,7 +15,7 @@ BuildRequires:	libtool
 BuildRequires:	swig
 BuildRequires:	jpeg-devel
 BuildRequires:	tiff-devel
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -89,11 +89,11 @@ make check
 %{_bindir}/tiffdiff
 %{_bindir}/tifficc
 %{_bindir}/wtpt
-%{_mandir}/man1/icc2ps.1*
-%{_mandir}/man1/icclink.1*
-%{_mandir}/man1/jpegicc.1*
-%{_mandir}/man1/tifficc.1*
-%{_mandir}/man1/wtpt.1*
+%doc %{_mandir}/man1/icc2ps.1*
+%doc %{_mandir}/man1/icclink.1*
+%doc %{_mandir}/man1/jpegicc.1*
+%doc %{_mandir}/man1/tifficc.1*
+%doc %{_mandir}/man1/wtpt.1*
 
 %files -n %{libname}
 %doc AUTHORS COPYING NEWS README.1ST
@@ -108,4 +108,3 @@ make check
 %doc python/testbed/*
 %{python_sitearch}/lcms.py*
 %{python_sitearch}/_lcms.so
-%{python_sitearch}/__pycache__/*
