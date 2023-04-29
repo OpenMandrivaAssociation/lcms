@@ -1,0 +1,65 @@
+diff -up lcms-1.19/include/lcms.h.omv~ lcms-1.19/include/lcms.h
+--- lcms-1.19/include/lcms.h.omv~	2023-04-29 13:49:48.149813655 +0200
++++ lcms-1.19/include/lcms.h	2023-04-29 13:49:57.171896924 +0200
+@@ -1235,9 +1235,9 @@ LCMSAPI LPLUT  LCMSEXPORT cmsDupLUT(LPLU
+ 
+ // LUT Sampling
+ 
+-typedef int (* _cmsSAMPLER)(register WORD In[],
+-                            register WORD Out[],
+-                            register LPVOID Cargo);
++typedef int (* _cmsSAMPLER)(WORD In[],
++                            WORD Out[],
++                            LPVOID Cargo);
+ 
+ #define SAMPLER_HASTL1      LUT_HASTL1
+ #define SAMPLER_HASTL2      LUT_HASTL2
+@@ -1247,9 +1247,9 @@ LCMSAPI int LCMSEXPORT cmsSample3DGrid(L
+ 
+ // Formatters
+ 
+-typedef unsigned char* (* cmsFORMATTER)(register void* CMMcargo,
+-                                        register WORD ToUnroll[],
+-                                        register LPBYTE Buffer);
++typedef unsigned char* (* cmsFORMATTER)(void* CMMcargo,
++                                        WORD ToUnroll[],
++                                        LPBYTE Buffer);
+ 
+ LCMSAPI void LCMSEXPORT cmsSetUserFormatters(cmsHTRANSFORM hTransform, DWORD dwInput,  cmsFORMATTER Input,
+                                                                DWORD dwOutput, cmsFORMATTER Output);
+@@ -1884,9 +1884,9 @@ typedef void   (* _cmsTRANSFN)(struct _c
+ 
+ typedef void   (* _cmsCNVRT)(WORD In[], WORD Out[]);
+ 
+-typedef LPBYTE (* _cmsFIXFN)(register struct _cmstransform_struct *info,
+-                             register WORD ToUnroll[],
+-                             register LPBYTE Buffer);
++typedef LPBYTE (* _cmsFIXFN)(struct _cmstransform_struct *info,
++                             WORD ToUnroll[],
++                             LPBYTE Buffer);
+ 
+ 
+ 
+diff -up lcms-1.19/src/cmsio1.c.omv~ lcms-1.19/src/cmsio1.c
+--- lcms-1.19/src/cmsio1.c.omv~	2023-04-29 13:48:31.427102042 +0200
++++ lcms-1.19/src/cmsio1.c	2023-04-29 13:49:37.844718443 +0200
+@@ -23,6 +23,8 @@
+ // ICC profile serialization
+ 
+ 
++#define _XOPEN_SOURCE 1 // swab
++#define _GNU_SOURCE 1 // strcasestr
+ #include "lcms.h"
+ 
+ // ----------------------------------------------------------------- Tag Serialization
+diff -up lcms-1.19/testbed/testcms.c.omv~ lcms-1.19/testbed/testcms.c
+--- lcms-1.19/testbed/testcms.c.omv~	2023-04-29 13:51:44.770884140 +0200
++++ lcms-1.19/testbed/testcms.c	2023-04-29 13:51:54.233970487 +0200
+@@ -24,6 +24,7 @@
+ 
+ // #define ICM_COMPARATIVE      1
+ // #define CHECK_SPEED          1
++#define _XOPEN_SOURCE 1 // swab
+ 
+ #ifdef __BORLANDC__
+ #     include <condefs.h>
