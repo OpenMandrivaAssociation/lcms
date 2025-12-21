@@ -12,6 +12,11 @@ Url:		https://www.littlecms.com/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		lcms-1.19-fix-python3.2.patch
 Patch1:		lcms-1.19-clang16.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libtool
 BuildRequires:	swig
 BuildRequires:	jpeg-devel
