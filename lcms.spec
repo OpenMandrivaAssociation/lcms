@@ -109,5 +109,5 @@ cd -
 
 %files -n python-lcms
 %doc python/testbed/*
-%{python_sitearch}/lcms.py*
-%{python_sitearch}/_lcms.so
+#{python_sitearch}/lcms.py*
+#{python_sitearch}/_lcms.so
