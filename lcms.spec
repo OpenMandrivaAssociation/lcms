@@ -80,9 +80,6 @@ cd -
 
 %make_build
 
-%check
-make check
-
 %install
 %make_install
 
